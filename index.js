@@ -59,8 +59,8 @@
       - Methods:
         - extname(): Return the extension of the file; For folders, it returns empty string
         - parse(): Return an object for that path
-        - join():  Concatenates the given path strings to form a path
-        - resolve(): Resolves the given path strings to return absolute path
+        - join():  Concatenates the given path segments to form a single path
+        - resolve(): Resolves the given path segments to return an absolute path
     
     - Reserved keywords for path
       - __dirname: Current working directory (folder)
