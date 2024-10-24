@@ -1,25 +1,22 @@
 const http = require('http')
-const axios = require('axios')
+const dotenv = require('dotenv')
+dotenv.config()
 
-const fetchUsers = async () => {
-  try {
-    const res = await axios.get('https://reqres.in/api/users')
-    return res.data.data
-  } catch (err) {
-    console.log(err)
+const server = http.createServer((req, res) => {
+  if(req.url == '/favicon.ico') {
+    return res.end()
   }
-}
-
-const server = http.createServer(async (req, res) => {
-  const users = await fetchUsers()
-  res.end(JSON.stringify(users))
+  console.log(process.env.EMAIL, process.env.NAME)
+  res.end('Hi')
 })
 
 server.listen(3000)
 
-/*
-  # Axios
-    - Method names related to HTTP methods (Eg.: .get(), .post(), etc.)
-    - By default converts the data to JSON format
-    - In the overall response, the JSON data is stored in 'data' property
+/* 
+  # Environment Variables:
+    - Install dotenv, Import and invoke config() method
+    - Create .env file, add variables
+      - EMAIL=user@gmail.com
+    - To use these variables in server
+      - process.env.EMAIL
 */
